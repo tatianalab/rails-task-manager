@@ -3,5 +3,9 @@
 <%= check_box_tag :completed, checked = true %> This task is not completed yet
 
 <div>
+<%= link_to "Update", edit_path(@task) %>
+</div>
+
+<div>
 <%= link_to "Back to home", tasks_path %>
 </div>
