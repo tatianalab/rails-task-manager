@@ -1,6 +1,7 @@
 <h1>All Tasks</h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= task.title %>:<%= task.details %> done:<%= task.completed %></li>
-  <% end %>
-</ul>
+
+<% @tasks.each do |task| %>
+<%= check_box_tag :task, checked = true %> <%= task.title %> </br></br>
+<% end %>
+
+
