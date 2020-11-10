@@ -1,12 +1,22 @@
-<h1>All Tasks</h1>
-
-<% @tasks.each do |task| %>
-<%= check_box_tag :completed, checked = true %>
-<%= link_to task.title, task_path(task) %> </br></br>
-<% end %>
-
-<div>
-<%= link_to "Add a new task", tasks_new_path %>
+<div class="container">
+  <div class="col-xs-12">
+    <h1>My Tasks</h1>
+    <% @tasks.each do |task| %>
+      <div class="custom-control custom-checkbox">
+        <% if task.completed %>
+        <input type="checkbox" class="form-check-input" checked = true >
+        <% else %>
+        <input type="checkbox" class="form-check-input" checked = false>
+        <% end %>
+       <%= link_to task[:title], task_path(task) %>
+       <%= link_to "Delete",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      </div>
+    <% end %>
+    <%= link_to "Add a new task", tasks_new_path %>
+  </div>
 </div>
 
 

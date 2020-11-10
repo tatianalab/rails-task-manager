@@ -1,11 +1,28 @@
-<h1><%= @task.title %></h1>
-<h3><%= @task.details %></h3>
-<%= check_box_tag :completed, checked = true %> This task is not completed yet
-
-<div>
-<%= link_to "Update", edit_path(@task) %>
-</div>
-
-<div>
-<%= link_to "Back to home", tasks_path %>
+<div class="container">
+  <div class="col-xs-12">
+    <div class="title">
+      <%= @task.title %>
+      <%= link_to edit_path(@task) %>
+      <%= link_to task_path(params[:id]),
+            method: :delete,
+            data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+    <!-- details -->
+    <div class="details">
+      <i class="fa fa-info-circle padded" aria-hidden="true"></i><%= @task.details %>
+    </div>
+    <div class="completed">
+      <% if @task.completed %>
+        <i class="fa fa-check-square-o padded"><%= ' this task is completed' %></i>
+      <% else %>
+        <i class="fa fa-square-o padded"><%= ' this task is NOT completed' %></i>
+      <% end %>
+    </div>
+    <div class="backlink">
+      <%= link_to "Update", edit_path(@task) %>
+      <%= link_to 'Back to Checklist', tasks_path %>
+    </div>
+  </div>
 </div>

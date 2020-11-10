@@ -1,7 +1,29 @@
-<h1>Update the task</h1>
-<%= form_for(@task) do |f| %>
-  Title:<%= f.text_field :title %> </br>
-  Details:<%= f.text_field :details %></br>
-  <%= f.check_box :completed %> Completed? </br>
-  <%= f.submit "Update Task" %>
-<% end %>
+<div class="container">
+  <div class="col-xs-12">
+    <%= form_for(@task) do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :details %>
+        <%= f.text_field :details, class: 'form-control' %>
+      </div>
+
+      <div class="form-group custom-control custom-checkbox">
+        <%= f.check_box :completed%>
+        Completed?
+      </div>
+
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+    <div class="link padded">
+      <%= link_to tasks_path do %>
+        <i class="fa fa-undo" aria-hidden="true"> Back to checklist</i>
+      <% end %>
+
+    </div>
+  </div>
+</div>
